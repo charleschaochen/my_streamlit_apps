@@ -3,7 +3,7 @@ import streamlit as st
 import openai
 
 # 设置OpenAI API密钥
-openai.api_key = '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'
+openai.api_key = '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'
 
 # 创建一个输入框，让用户输入他们的问题
 question = st.text_input("Enter your question")
