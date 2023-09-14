@@ -1,12 +1,19 @@
-# 导入streamlit库
+# 导入所需的库
 import streamlit as st
+import openai
 
-# 创建一个输入框，让用户输入他们的名字
-name = st.text_input("Enter your name")
+# 设置OpenAI API密钥
+openai.api_key = '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'
 
-# 当用户输入他们的名字后，显示一个问候语
-if name:
-    st.write(f"Hello, {name}!")
+# 创建一个输入框，让用户输入他们的问题
+question = st.text_input("Enter your question")
 
-# 运行这个Streamlit应用，你需要在命令行中输入以下命令：
-# streamlit run your_script.py
+# 当用户输入他们的问题后，使用GPT-3生成一个回答
+if question:
+    response = openai.Completion.create(
+      engine="text-davinci-002",
+      prompt=question,
+      temperature=0.5,
+      max_tokens=100
+    )
+    st.write(response.choices[0].text.strip())
